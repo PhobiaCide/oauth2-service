@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, minimum-scale=0.1" />
+    <title>Redirect To Single Sign-On</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Convergence&family=Iceland&family=Marvel&family=Rationale&family=Ruluko&family=Strait&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="Fragma Medium.ttf" rel="stylesheet" />
+    <link href="evesansneue-expanded.ttf" rel="stylesheet" />
+    <link href="evesansneue-condensed.ttf" rel="stylesheet" />
+    <style>
+      :root {
+        --color: rgb(192, 192, 192);
+        --background-color: #1d1d1d;
+      }
+
+      html {
+        margin: 0;
+        padding: 0;
+        /*
+        font-family: "Convergence", sans-serif;
+        font-family: "Marvel", sans-serif;
+        font-family: "Rationale", sans-serif;
+        */
+        font-size: 18px;
+        font-weight: 113;
+        font-family: "fragma", sans-serif;
+        /*
+        font-family: "eve sans neue condensed", sans-serif;
+  */
+        height: 100vh;
+        background-image: url("https://web-cdn.eveonline.com/aws/eveonline/sso/background.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        filter: brightness(1.2) saturate(1.2) contrast(1);
+      }
+
+      body {
+        color: var(--color);
+        background-color: transparent;
+        width: 100vw;
+        margin-left: 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      main {
+        position: absolute;
+        width: 100%;
+        top: 50vh;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border-top: 13px outset silver;
+        border-bottom: 13px outset silver;
+        background-color: rgba(0, 0, 0, .6);
+        backdrop-filter: blur(6px) brightness(1) saturate(1) contrast(1) hue-rotate(0deg) invert(0) opacity(.6)
+          grayscale(0.5);
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Iceland", cursive;
+        line-height: 0;
+        font-weight: 100;
+      }
+
+      h1 {
+        font-size: 54px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      p {
+        line-height: 0.8;
+      }
+
+      header {
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      header,
+      section {
+        width: 100%;
+        letter-spacing: 1.2px;
+        line-height: 0.8;
+      }
+
+      button {
+        padding: 0;
+        background-color: transparent;
+        border: 1px outset silver;
+        border-radius: 3px;
+      }
+
+      img {
+        margin: auto;
+      }
+
+      #eve-logo {
+        left: 50%;
+        cursor: default;
+      }
+
+      footer {
+        background-color: transparent;
+        position: fixed;
+        bottom: -30px;
+        line-height: 1;
+        font-size: 12px;
+        width: 100%;
+        color: var(--color);
+        text-align: center;
+        transition: bottom 400ms;
+      }
+
+      footer:hover {
+        bottom: 3px;
+      }
+
+      footer:hover figure {
+        filter: drop-shadow(0 0 13px silver);
+      }
+
+      footer figure {
+        font-size: 28px;
+        display: inline;
+        margin-inline-start: 0;
+        margin-inline-end: 0;
+        filter: drop-shadow(0 0 13px black);
+      }
+
+      #heart-figure::before,
+      #heart-figure::after {
+        position: relative;
+        top: 0;
+        left: 0;
+        transition: opacity 1000ms;
+      }
+
+      /* Show the broken heart by default using the ::before pseudo-element */
+      #heart-figure::before {
+        content: "🖤";
+        filter: drop-shadow(0px 0px 13px gold);
+      }
+
+      #heart-figure::after {
+        content: "💔";
+        display: none;
+        opacity: 0; /* Hide the black heart initially */
+        filter: drop-shadow(0px 0px 13px var(--background-color));
+      }
+
+      footer:hover #heart-figure::before {
+        display: none;
+        opacity: 0;
+        transition: opacity 1000ms;
+      }
+
+      footer:hover #heart-figure::after {
+        display: inline;
+        opacity: 1; /* Show the black heart on hover */
+        transition: opacity 1000ms;
+      }
+
+      hr {
+        max-width: 350px;
+        /*
+        height: 0px;
+        border: 13px solid transparent;
+
+        border-top-style: dashed;
+        border-top-width: 3px;
+        border-top-color: green;
+        
+        border-bottom-style: dashed;
+        border-bottom-width: 3px;
+        border-bottom-color: red;
+        
+        outline-color: blue;
+        outline-style: dotted;
+        outline-width: 3px;
+        outline-offset: -3px;
+
+        background-color: transparent;
+        border-radius: 0%;
+        filter: blur(0px);
+*/
+      }
+      #sso {
+        width: 250px;
+        display: block;
+      }
+
+      #sso:hover {
+        box-shadow: 0 0 13px 1px rgba(192, 192, 192, 0.4),
+          0 0 13px 2px rgba(192, 192, 192, 0.2),
+          0 0 13px 3px rgba(192, 192, 192, 0.1),
+          0 0 13px 4px rgba(192, 192, 192, 0.05),
+          0 0 13px 5px rgba(192, 192, 192, 0.025);
+        transition: ease-in-out;
+        transition-delay: 200ms;
+        transition-duration: 200ms;
+      }
+
+      a {
+        cursor: pointer;
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 36px;
+        }
+        #sso {
+          width: 150px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <figure id="eve-logo">
+      <img
+        src="https://web-cdn.eveonline.com/aws/eveonline/sso/eve-logo.svg"
+        alt="Eve Online Logo"
+      />
+    </figure>
+    <main id="content">
+      <header>
+        <h1>Single Sign-On</h1>
+        <h2>Redirect For</h2>
+        <hr />
+      </header>
+      <section>
+        <p>Google Apps Scripts may not redirect the browser.</p>
+        <button alt="Redirect To Official Tranquility Login Gateway">
+          <a href="<?= `${authorizationUrl()}` ?>" target="_blank">
+            <img
+              id="sso"
+              src="https://web.ccpgamescdn.com/eveonlineassets/developers/eve-sso-login-black-large.png"
+              alt="Eve Online SSO"
+            />
+          </a>
+        </button>
+        <p>Click the button above to authorize with Tranquility.</p>
+      </section>
+    </main>
+    <footer>
+      Made With
+      <figure id="heart-figure"></figure>
+      By PhobiaCide
+      <hr />
+      © 2023 PhobiaCide
+      <br />
+      All Eve Online materials property of CCP
+    </footer>
+  </body>
+</html>

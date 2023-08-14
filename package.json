@@ -1,0 +1,11 @@
+{
+  "name": "oauth2",
+  "version": "1.0.0",
+  "description": "Attempt to understand and create my own oAuth2 handler",
+  "main": "oAuth2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
