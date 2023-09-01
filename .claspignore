@@ -1,0 +1,6 @@
+*.*
+./fonts/*.*
+./graphs/*.*
+!*.js
+!*.html
+!*.css
